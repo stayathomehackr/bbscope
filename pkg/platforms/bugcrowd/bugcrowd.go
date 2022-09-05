@@ -203,7 +203,7 @@ func GetProgramScope(handle string, categories string, token string) (pData scop
 		defer resp2.Body.Close()
 		body2, _ := ioutil.ReadAll(resp2.Body)
 
-		chunkData := gjson.GetMany(string(body2), "targets.#.name", "targets.#.category", "targets.#.description")
+		chunkData := gjson.GetMany(string(body2), "targets.#.uri", "targets.#.category", "targets.#.name")
 		for i := 0; i < len(chunkData[0].Array()); i++ {
 			var currentTarget struct {
 				line     string
